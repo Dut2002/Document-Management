@@ -1,0 +1,79 @@
+﻿@page
+@model Project_PRN221.Pages.User.RegisterModel
+@{
+}
+<section class="page-breadcrumb">
+    <div class="container">
+        <div class="row justify-content-between align-content-center">
+            <div class="col-md-auto">
+                <h3>Create an account</h3>
+            </div>
+            <div class="col-md-auto">
+                <ul class="au-breadcrumb">
+                    <li>
+                        <a href="/index">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">My Account</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SIGN UP -->
+<section class="section-primary sign-up pt-112 pb-90">
+    <div class="container">
+        <h4>Create an account</h4>
+        <form method="post" enctype="multipart/form-data">
+
+            <div class="form-holder">
+                <label>Full Name</label>
+                <input type="text" asp-for="User.FullName" class="form-control"/>
+                <span class="msg-error" asp-validation-for="User.FullName"></span>
+            </div>
+            <div class="form-holder">
+                <label>User Name</label>
+                <input type="text" asp-for="User.UserName" class="form-control" />
+                <span class="msg-error" asp-validation-for="User.UserName"></span>
+            </div>
+            <div class="form-holder">
+                <label>Email</label>
+                <input type="text" asp-for="User.Email" class="form-control" />
+                <span class="msg-error" asp-validation-for="User.Email"></span>
+            </div>
+            <div class="form-holder">
+                <label>Password</label>
+                <input type="password" asp-for="User.Password" class="form-control" />
+                <span class="msg-error" asp-validation-for="User.Password"></span>
+            </div>
+            <div class="form-holder">
+                <label>Phone</label>
+                <input type="text" asp-for="User.Phone" class="form-control" />
+                <span class="msg-error" asp-validation-for="User.Phone"></span>
+            </div>
+            <div class="form-holder">
+                <select asp-for="User.AgenceId" asp-items="ViewBag.AgenceId" class="orderby form-control" style="width:100%">
+                    <option value="" selected>Select Agence</option>
+                </select>
+                <span class="msg-error" asp-validation-for="User.AgenceId"></span>
+            </div>
+            <div>
+                <label>Avatar<span class="required">*</span></label>
+                <input asp-for="FileInput" type="file" id="FileInput"/>
+                <span class="msg-error" asp-validation-for="FileInput"></span>
+            </div>
+            <input asp-for="User.RoleId" value="2" type="hidden" />
+            <span class="msg-error" asp-validation-for="User.RoleId"></span>
+
+
+            <input class="au-btn round has-bg" type="submit" name="submit" value="Sign in" />
+            <a href="/index" class="return-link">Return to Store</a>
+        </form>
+        @if (ViewBag.Error != null)
+        {
+            <p>@ViewBag.Error</p>
+        }
+    </div>
+</section>
